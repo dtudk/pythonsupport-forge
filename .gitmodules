@@ -1,0 +1,3 @@
+[submodule "miniforge"]
+	path = miniforge
+	url = git@github.com:conda-forge/miniforge.git
