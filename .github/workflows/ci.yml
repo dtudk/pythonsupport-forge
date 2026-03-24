@@ -119,7 +119,7 @@ jobs:
           TARGET_PLATFORM: ${{ matrix.TARGET_PLATFORM }}
           TEST_IMAGE_NAMES: ${{ matrix.TEST_IMAGE_NAMES }}
         run: |
-          cd miniforge/Miniforge3
+          cd miniforge
           if [[ "$GITHUB_REF" == refs/tags/* ]]; then
             export MINIFORGE_VERSION=${GITHUB_REF##*/};
           fi
