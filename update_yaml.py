@@ -32,7 +32,7 @@ def replace_key(stream: StringIO, key: str, value: str) -> StringIO:
 
     for line in stream:
         if line.startswith(key_s):
-            out.write(": ".join([key, value]) + "\n")
+            out.write(": ".join([key, str(value)]) + "\n")
             found = True
         else:
             out.write(line)
