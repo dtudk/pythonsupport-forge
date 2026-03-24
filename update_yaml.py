@@ -117,6 +117,9 @@ for key in ("specs", "user_requested_specs"):
         element_start, *_ = element.split(" ", maxsplit=1)
         yaml_stream = replace_list_element(yaml_stream, key, element_start, element)
 
+for key in ("name", "company", "initialize_by_default"):
+    yaml_stream = replace_key(yaml_stream, key, dtu_values.pop(key))
+
 
 # Check that there are no new keys!
 for key in dtu_values:
