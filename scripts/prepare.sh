@@ -3,14 +3,19 @@
 # Prepare the installation procedure
 set -xe
 
+conda env list
+conda activate test
+
 conda info
 conda list
 
 # Now create the yaml files and install details
-mamba install --yes pyyaml --channel conda-forge --override-channels
+conda install --yes pyyaml --channel conda-forge --override-channels
 
 conda info
 conda list
+which python3
+which python
 
 # Now we have the required python packages
 if [[ ! -e miniforge/Miniforge3/construct.yaml ]]; then
