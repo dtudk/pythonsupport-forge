@@ -5,16 +5,12 @@ set -xe
 
 conda env list
 conda init
-conda activate test
 
 conda info
 conda list
 
 # Now create the yaml files and install details
 conda install --yes pyyaml --channel conda-forge --override-channels
-
-conda info
-conda list
 
 which python3
 which python
