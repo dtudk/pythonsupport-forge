@@ -107,8 +107,7 @@ jobs:
       # Added
       - name: Creating yml files
         run: |
-          [ -e miniforge/Miniforge3/construct.yaml ] || { echo "File not found!" ; exit 1 ; }
-          python3 update_yaml.py miniforge/Miniforge3/construct.yaml
+          bash scripts/prepare.sh
 
       - name: Build and test miniforge
         env:
