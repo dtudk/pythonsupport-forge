@@ -5,6 +5,7 @@ set -xe
 
 conda env list
 conda init
+conda activate test
 
 conda info
 conda list
@@ -23,5 +24,11 @@ if [[ ! -e miniforge/Miniforge3/construct.yaml ]]; then
   echo "Output file not found! Quitting..."
   exit 1
 fi
-python3 update_yaml.py miniforge/Miniforge3/construct.yaml
+
+OUT=miniforge/Miniforge3/construct.yaml
+python3 update_yaml.py $OUT
+
+echo "<<< BOF >>>"
+cat $OUT
+echo "<<< EOF >>>"
 
