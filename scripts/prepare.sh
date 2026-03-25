@@ -3,8 +3,14 @@
 # Prepare the installation procedure
 set -xe
 
+conda info
+conda list
+
 # Now create the yaml files and install details
 mamba install --yes pyyaml --channel conda-forge --override-channels
+
+conda info
+conda list
 
 # Now we have the required python packages
 if [[ ! -e miniforge/Miniforge3/construct.yaml ]]; then
