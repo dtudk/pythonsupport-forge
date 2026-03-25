@@ -1,4 +1,7 @@
 dtu_python_version: &dtu_python_version python 3.12.*
+dtu_jinja_variables:
+  dtu_semester: A
+  dtu_year: 2026
 
 name: Miniforge3
 company: "DTU Python Installation Support"

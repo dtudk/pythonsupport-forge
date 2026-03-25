@@ -100,10 +100,23 @@ def has_key(stream: StringIO, key:str) -> bool:
 
 # Do actual parsing and creation of the new constructor recipe.
 # This is hard-coded because it'll always be this one
-yaml_stream = read_yaml("miniforge/Miniforge3/construct.yaml")
+yaml_stream = StringIO()
 
 # Parse the yaml file with the data that is specific for DTU
 dtu_values = safe_load(open("dtu_constructor.yaml", 'r'))
+
+# Add new Jinja keys
+yaml_stream.write(f"# DTU defined Jinja-variables\n")
+for variable, value in dtu_values.pop("dtu_jinja_variables").items():
+    yaml_stream.write(f"{{% {variable} = \"{value!s}\" %}}\n")
+yaml_stream.write("\n")
+
+yaml_stream.write(
+        read_yaml("miniforge/Miniforge3/construct.yaml")
+        .getvalue()
+        )
+yaml_stream.seek(0)
+
 # Start by replacing the Python version
 yaml_stream = replace_list_element(yaml_stream, "specs", "python",
                                    dtu_values.pop("dtu_python_version"))
