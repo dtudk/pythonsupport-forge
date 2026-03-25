@@ -4,7 +4,7 @@
 set -xe
 
 conda env list
-conda activate test
+conda init
 
 conda info
 conda list
@@ -14,6 +14,7 @@ conda install --yes pyyaml --channel conda-forge --override-channels
 
 conda info
 conda list
+
 which python3
 which python
 
