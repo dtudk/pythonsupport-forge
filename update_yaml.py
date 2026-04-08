@@ -133,12 +133,12 @@ for key in ("specs", "user_requested_specs"):
 for key in ("name", "company", "initialize_by_default"):
     yaml_stream = replace_key(yaml_stream, key, dtu_values.pop(key))
 
-# The `dtu_` prefixed keys should be popped as they are only used for
-# version specifications.
-for key in list(dtu_values.keys()):
 
 # Check that there are no new keys!
 for key in list(dtu_values.keys()):
+
+    # The `dtu_` prefixed keys should be popped as they are only used for
+    # version specifications.
     if key.startswith("dtu_"):
         dtu_values.pop(key)
         continue
