@@ -106,7 +106,7 @@ jobs:
 
       # Added
       - name: Creating yml files (Win)
-        run: pwsh scripts/prepare.pwsh
+        run: pwsh scripts/prepare.ps1
         if: ${{ contains(matrix.OS_NAME, 'Windows') }}
       - name: Creating yml files (*nix)
         shell: bash -el {0}
