@@ -1,7 +1,3 @@
-#!/usr/bin/env bash
-
-# Prepare the installation procedure
-set -xe
 
 conda env list
 conda init
@@ -16,15 +12,15 @@ which python3
 which python
 
 # Now we have the required python packages
-OUT=miniforge/Miniforge3/construct.yaml
-if [[ ! -e $OUT ]]; then
-  echo "Output file not found! Quitting..."
-  exit 1
-fi
+$OUT=miniforge/Miniforge3/construct.yaml
+if (Test-Path $OUT) {
+  Write-Warning "Output file not found! Quitting..."
+  Exit
+}
 
 python3 update_yaml.py $OUT
 
-echo "<<< BOF >>>"
+Write-Host "<<< BOF >>>"
 cat $OUT
-echo "<<< EOF >>>"
+Write-Host "<<< EOF >>>"
 
