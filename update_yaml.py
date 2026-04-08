@@ -119,7 +119,7 @@ yaml_stream.seek(0)
 
 # Start by replacing the Python version
 yaml_stream = replace_list_element(yaml_stream, "specs", "python",
-                                   dtu_values.pop("dtu_python"))
+                                   dtu_values["dtu_python"])
 
 
 # Pop out the specification for the version
@@ -133,9 +133,18 @@ for key in ("specs", "user_requested_specs"):
 for key in ("name", "company", "initialize_by_default"):
     yaml_stream = replace_key(yaml_stream, key, dtu_values.pop(key))
 
+# The `dtu_` prefixed keys should be popped as they are only used for
+# version specifications.
+for key in list(dtu_values.keys()):
 
 # Check that there are no new keys!
-for key in dtu_values:
+for key in list(dtu_values.keys()):
+    if key.startswith("dtu_"):
+        dtu_values.pop(key)
+        continue
+
+    # Check the key does not exist in the *other* yaml
+    # file.
     if has_key(yaml_stream, key):
         raise NotImplementedError(f"Found the {key=}, but did not expect it!")
 
