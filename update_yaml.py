@@ -108,7 +108,7 @@ dtu_values = safe_load(open("dtu_constructor.yaml", 'r'))
 # Add new Jinja keys
 yaml_stream.write(f"# DTU defined Jinja-variables\n")
 for variable, value in dtu_values.pop("dtu_jinja_variables").items():
-    yaml_stream.write(f"{{% {variable} = \"{value!s}\" %}}\n")
+    yaml_stream.write(f"{{% set {variable} = \"{value!s}\" %}}\n")
 yaml_stream.write("\n")
 
 yaml_stream.write(
