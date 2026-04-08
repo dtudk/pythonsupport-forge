@@ -105,10 +105,10 @@ jobs:
           echo "MINIFORGE_INSTALLER_TYPE=all" >> $GITHUB_ENV
 
       # Added
-      - name: Creating yml files (Win)
+      - name: DTU Creating yml files (Win)
         run: pwsh scripts/prepare.ps1
         if: ${{ contains(matrix.OS_NAME, 'Windows') }}
-      - name: Creating yml files (*nix)
+      - name: DTU Creating yml files (*nix)
         shell: bash -el {0}
         run: bash scripts/prepare.sh
         if: ${{ ! contains(matrix.OS_NAME, 'Windows') }}
