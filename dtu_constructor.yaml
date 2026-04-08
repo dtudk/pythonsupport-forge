@@ -1,4 +1,8 @@
-dtu_python_version: &dtu_python_version python 3.12.*
+# Shortcuts for generalized output
+dtu_python: &dtu_python python 3.12.*
+dtu_dtumathtools: &dtu_dtumathtools dtumathtools =2025
+dtu_matplotlib: &dtu_matplotlib matplotlib >=3.8
+
 dtu_jinja_variables:
   dtu_semester: A
   dtu_year: 2026
@@ -8,8 +12,8 @@ company: "DTU Python Installation Support"
 initialize_by_default: True
 
 user_requested_specs:
-  - *dtu_python_version
-  - dtumathtools
+  - *dtu_python
+  - *dtu_dtumathtools
   - matplotlib >=3.8
   - pandas
   - scipy
@@ -17,9 +21,9 @@ user_requested_specs:
   - uncertainties
 
 specs:
-  - *dtu_python_version
-  - dtumathtools
-  - matplotlib >=3.8
+  - *dtu_python
+  - *dtu_dtumathtools
+  - *dtu_matplotlib
   - pandas
   - scipy
   - statsmodels
@@ -33,20 +37,20 @@ extra_envs:
     channels:
       - conda-forge
     specs:
-      - *dtu_python_version
-      - dtumathtools
-      - matplotlib >=3.8
+      - *dtu_python
+      - *dtu_dtumathtools
+      - *dtu_matplotlib
   02002-{{ dtu_semester }}{{ dtu_year[2:] }}:
     channels:
       - conda-forge
     specs:
-      - *dtu_python_version
+      - *dtu_python
   02402-{{ dtu_semester }}{{ dtu_year[2:] }}:
     channels:
       - conda-forge
     specs:
-      - *dtu_python_version
-      - matplotlib >=3.8
+      - *dtu_python
+      - *dtu_matplotlib
       - pandas
       - scipy
       - statsmodels
@@ -54,8 +58,8 @@ extra_envs:
     channels:
       - conda-forge
     specs:
-      - *dtu_python_version
-      - matplotlib >=3.8
+      - *dtu_python
+      - *dtu_matplotlib
       - pandas
       - scipy
       - uncertainties

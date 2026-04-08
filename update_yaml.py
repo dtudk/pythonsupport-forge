@@ -119,7 +119,7 @@ yaml_stream.seek(0)
 
 # Start by replacing the Python version
 yaml_stream = replace_list_element(yaml_stream, "specs", "python",
-                                   dtu_values.pop("dtu_python_version"))
+                                   dtu_values.pop("dtu_python"))
 
 
 # Pop out the specification for the version
