@@ -1,5 +1,17 @@
 name: Build DTU miniforge
-on: [ push, pull_request ]
+on:
+  push:
+    name: Push done
+  pull_request:
+    name: Pull request created
+  workflow_dispatch:
+    name: User requested
+    inputs:
+      release:
+        description: 'Force-build?'
+        type: boolean
+        required: false
+        default: false
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.sha }}
