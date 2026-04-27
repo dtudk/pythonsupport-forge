@@ -135,9 +135,10 @@ jobs:
           TEST_IMAGE_NAMES: ${{ matrix.TEST_IMAGE_NAMES }}
         run: |
           cd miniforge
-          if [[ "$GITHUB_REF" == refs/tags/* ]]; then
-            export MINIFORGE_VERSION=${GITHUB_REF##*/};
-          fi
+          # PIS changed this, remove it
+          #if [[ "$GITHUB_REF" == refs/tags/* ]]; then
+          #  export MINIFORGE_VERSION=${GITHUB_REF##*/};
+          #fi
           if [[ "$OS_NAME" == "Linux" ]]; then
             export EXT=sh
             bash build_miniforge.sh;
