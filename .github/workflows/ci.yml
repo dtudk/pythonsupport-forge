@@ -179,3 +179,29 @@ jobs:
           overwrite: true
           file_glob: true
         if: startsWith(github.ref, 'refs/tags/')
+
+      - name: Prepare GITHUB env
+        shell: bash -el {0}
+        run: |
+          PS_DTU_REF="${GITHUB_REF##*/}"
+          PS_DTU_YEAR="${GITHUB_REF%%\.*}"
+          echo "PS_DTU_REF=$PS_DTU_REF" >> $GITHUB_ENV
+          echo "PS_DTU_YEAR=$PS_DTU_YEAR" >> $GITHUB_ENV
+          # Now move all builds to proper version
+          cd miniforge/build/
+          for f in M*forge* ; do
+            ext=${f##*\.}
+            mv $f ${f//\.${ext}/}-$PS_DTU_REF.${ext}
+          done
+        if: startsWith(github.ref, 'refs/tags/')
+
+      - name: Upload release pythonsupport.dtu.dk
+        uses: Burnett01/rsync-deployments@v8
+        with:
+          switches: -vr
+          path: miniforge/build/M*forge*-$PS_DTU_REF.*
+          remote_path: ${{ secrets.DEPLOY_PATH }}/ps-files/installer/${PS_DTU_YEAR}/
+          remote_host: ${{ secrets.DEPLOY_HOST }}
+          remote_user: ${{ secrets.DEPLOY_USER }}
+          remote_key: ${{ secrets.DEPLOY_KEY_PRIVATE }}
+        if: startsWith(github.ref, 'refs/tags/')
