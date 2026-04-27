@@ -209,6 +209,8 @@ jobs:
               ext=${f##*\.}
               mv $f ../${f//\.${ext}/}-$PS_DTU_REF.${ext}
             done
+            popd
+            rm -rf $d/
           done
           ls -l
 
