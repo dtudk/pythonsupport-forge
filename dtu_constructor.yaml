@@ -5,7 +5,7 @@ dtu_matplotlib: &dtu_matplotlib matplotlib >=3.8
 
 dtu_jinja_variables:
   dtu_semester: A
-  dtu_year: 2026
+  dtu_year: 2025
 
 name: Miniforge3
 company: "DTU Python Installation Support"
