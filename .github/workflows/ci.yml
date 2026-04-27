@@ -180,6 +180,8 @@ jobs:
           file_glob: true
         if: startsWith(github.ref, 'refs/tags/')
 
+      # The rest are DTU specific content to upload content to our remote
+      # hosting site.
       - name: Prepare GITHUB env
         shell: bash -el {0}
         run: |
