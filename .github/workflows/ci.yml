@@ -202,10 +202,15 @@ jobs:
           echo "PS_DTU_REF=$PS_DTU_REF" >> $GITHUB_ENV
           echo "PS_DTU_YEAR=$PS_DTU_YEAR" >> $GITHUB_ENV
           # Now move all builds to proper version
-          for f in M*forge* ; do
-            ext=${f##*\.}
-            mv $f ${f//\.${ext}/}-$PS_DTU_REF.${ext}
+          for d in M*forge*/ ; do
+            pushd $d
+            ls -l
+            for f in M*forge* ; do
+              ext=${f##*\.}
+              mv $f ../${f//\.${ext}/}-$PS_DTU_REF.${ext}
+            done
           done
+          ls -l
 
       - name: Upload release pythonsupport.dtu.dk
         uses: Burnett01/rsync-deployments@v8
