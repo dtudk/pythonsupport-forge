@@ -198,7 +198,7 @@ jobs:
         run: |
           ls -l
           PS_DTU_REF="${GITHUB_REF##*/}"
-          PS_DTU_YEAR="${GITHUB_REF%%\.*}"
+          PS_DTU_YEAR="${PS_DTU_REF%%\.*}"
           echo "PS_DTU_REF=$PS_DTU_REF" >> $GITHUB_ENV
           echo "PS_DTU_YEAR=$PS_DTU_YEAR" >> $GITHUB_ENV
           # Now move all builds to proper version
