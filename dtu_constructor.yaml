@@ -1,12 +1,13 @@
 # Shortcuts for generalized output
-dtu_python: &dtu_python python 3.12.*
-dtu_dtumathtools: &dtu_dtumathtools dtumathtools =2025
+dtu_python: &dtu_python python 3.14.*
+dtu_numpy: &dtu_numpy numpy >=2.1
 dtu_matplotlib: &dtu_matplotlib matplotlib >=3.8
+dtu_spb: &dtu_spb sympy_plot_backends >=4
 
 dtu_jinja_variables:
   # We have to use the DTU signature, E=efterår, F=forår
   dtu_semester: E
-  dtu_year: 2025
+  dtu_year: 2026
 
 name: Miniforge3
 company: "DTU Python Installation Support"
@@ -14,8 +15,10 @@ initialize_by_default: True
 
 user_requested_specs:
   - *dtu_python
-  - *dtu_dtumathtools
-  - matplotlib >=3.8
+  - *dtu_numpy
+  - *dtu_matplotlib
+  - *dtu_spb
+  - scikit-learn
   - pandas
   - scipy
   - statsmodels
@@ -23,8 +26,9 @@ user_requested_specs:
 
 specs:
   - *dtu_python
-  - *dtu_dtumathtools
+  - *dtu_numpy
   - *dtu_matplotlib
+  - scikit-learn
   - pandas
   - scipy
   - statsmodels
@@ -39,18 +43,25 @@ extra_envs:
       - conda-forge
     specs:
       - *dtu_python
-      - *dtu_dtumathtools
+      - *dtu_numpy
       - *dtu_matplotlib
+      - *dtu_spb
+      - scikit-learn
+      - scipy
+      - pandas
   02002-{{ dtu_semester }}{{ dtu_year[2:] }}:
     channels:
       - conda-forge
     specs:
       - *dtu_python
+      - *dtu_numpy
+      - *dtu_matplotlib
   02402-{{ dtu_semester }}{{ dtu_year[2:] }}:
     channels:
       - conda-forge
     specs:
       - *dtu_python
+      - *dtu_numpy
       - *dtu_matplotlib
       - pandas
       - scipy
@@ -60,6 +71,7 @@ extra_envs:
       - conda-forge
     specs:
       - *dtu_python
+      - *dtu_numpy
       - *dtu_matplotlib
       - pandas
       - scipy
