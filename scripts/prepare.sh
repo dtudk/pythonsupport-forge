@@ -29,4 +29,4 @@ cat $OUT
 echo "<<< EOF >>>"
 
 # copy over post_install script 
-cp scripts/dtu_post_install.sh miniforge/dtu_post_install.sh
+cp scripts/dtu_post_install.sh miniforge/Miniforge3/dtu_post_install.sh
