@@ -30,7 +30,7 @@ specs:
   - statsmodels
   - uncertainties
 
-post_install: ../scripts/post_install.sh  # [unix]
+post_install: dtu_post_install.sh  # [unix]
 
 # Freeze base environment to prevent students from modifying it (CEP-22)
 # Requires constructor>=3.13.0
