@@ -18,6 +18,8 @@ user_requested_specs:
   - *dtu_numpy
   - *dtu_matplotlib
   - *dtu_spb
+  - jupyter
+  - ipykernel
   - scikit-learn
   - pandas
   - scipy
@@ -28,6 +30,8 @@ specs:
   - *dtu_python
   - *dtu_numpy
   - *dtu_matplotlib
+  - jupyter
+  - ipykernel
   - scikit-learn
   - pandas
   - scipy
@@ -43,10 +47,13 @@ freeze_base:
     message: |
       This base environment is frozen and cannot be modified.
 
-      To install additional packages, create a new environment:
-        conda create -n myproject python=3.12
+      To control packages please create a new environment:
+
+        conda create -n myproject python=3.14 <your-packages>
         conda activate myproject
-        conda install <your-packages>
+
+      For more information, have a look here:
+      https://pythonsupport.dtu.dk/learn-more/packages-and-environments/environments.html
 
 # We have access to these variables:
 # - dtu_year
@@ -60,6 +67,8 @@ extra_envs:
       - *dtu_numpy
       - *dtu_matplotlib
       - *dtu_spb
+      - jupyter
+      - ipykernel
       - scikit-learn
       - scipy
       - pandas
@@ -70,6 +79,8 @@ extra_envs:
       - *dtu_python
       - *dtu_numpy
       - *dtu_matplotlib
+      - jupyter
+      - ipykernel
   02402-{{ dtu_semester }}{{ dtu_year[2:] }}:
     channels:
       - conda-forge
@@ -80,6 +91,8 @@ extra_envs:
       - pandas
       - scipy
       - statsmodels
+      - jupyter
+      - ipykernel
   10060-{{ dtu_semester }}{{ dtu_year[2:] }}:
     channels:
       - conda-forge
@@ -90,3 +103,5 @@ extra_envs:
       - pandas
       - scipy
       - uncertainties
+      - jupyter
+      - ipykernel
