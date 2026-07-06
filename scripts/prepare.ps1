@@ -2,7 +2,6 @@
 
 # Prepare the installation procedure
 $ErrorActionPreference = 'Stop'
-Set-PSDebug -Trace 1
 
 conda env list
 conda init
@@ -14,7 +13,6 @@ conda list
 conda install --yes pyyaml --channel conda-forge --override-channels
 
 # List information on commands
-Get-Command python3
 Get-Command python
 
 # Now we have the required python packages
@@ -24,7 +22,7 @@ if (-not (Test-Path $OUT)) {
     exit 1
 }
 
-python3 update_yaml.py $OUT
+python update_yaml.py $OUT
 
 Write-Output "<<< BOF >>>"
 Get-Content $OUT
