@@ -38,23 +38,6 @@ specs:
   - statsmodels
   - uncertainties
 
-post_install: dtu_post_install.sh  # [unix]
-
-# Freeze base environment to prevent students from modifying it (CEP-22)
-# Requires constructor>=3.13.0
-freeze_base:
-  conda:
-    message: |
-      This base environment is frozen and cannot be modified.
-
-      To control packages please create a new environment:
-
-        conda create -n myproject python=3.14 <your-packages>
-        conda activate myproject
-
-      For more information, have a look here:
-      https://pythonsupport.dtu.dk/learn-more/packages-and-environments/environments.html
-
 # We have access to these variables:
 # - dtu_year
 # - dtu_semester

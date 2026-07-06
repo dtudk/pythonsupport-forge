@@ -23,6 +23,20 @@ def read_yaml(file: str | Path) -> StringIO:
     return yaml
 
 
+def delete_key(stream: StringIO, key: str) -> StringIO:
+    """Deletes a key in the stream if found """
+    out = type(stream)()
+
+    key_s = f"{key}:"
+
+    for line in stream:
+        if not line.startswith(key_s):
+            out.write(line)
+
+    out.seek(0)
+    return out
+
+
 def replace_key(stream: StringIO, key: str, value: str) -> StringIO:
     """Replaces a key in the stream if found """
     out = type(stream)()
@@ -154,8 +168,34 @@ yaml_stream.write("\n")
 yaml_stream.write("# DTU specific settings\n")
 safe_dump(dtu_values, yaml_stream)
 
+# Put the remaining content that should not be changed
+# Our implementation does not obey these, as there are OS-specific keys,
+# and multi-line messages. So we instead keep them here.
+delete_key(yaml_stream, "post_install")
+yaml_stream.write("""
+post_install: dtu_post_install.sh  # [unix]
+post_install: dtu_post_install.ps1  # [win]
+
+# Freeze base environment to prevent students from modifying it (CEP-22)
+# Requires constructor>=3.13.0
+freeze_base:
+  conda:
+    message: |
+      This base environment is frozen and cannot be modified.
+
+      To control packages please create a new environment:
+
+        conda create -n myproject python=3.14 <your-packages>
+        conda activate myproject
+
+      For more information, have a look here:
+      https://pythonsupport.dtu.dk/learn-more/packages-and-environments/environments.html
+""")
+
 if len(sys.argv) > 1:
     out = sys.argv[1]
 else:
     out = "constructor.yaml"
 open(out, 'w').write(yaml_stream.getvalue())
+
+
