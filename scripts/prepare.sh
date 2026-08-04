@@ -10,7 +10,7 @@ conda info
 conda list
 
 # Now create the yaml files and install details
-conda install --yes pyyaml --channel conda-forge --override-channels
+conda install pyyaml --channel conda-forge --yes --quiet
 
 which python3
 which python

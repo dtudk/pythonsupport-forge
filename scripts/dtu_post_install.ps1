@@ -6,8 +6,8 @@ Set-StrictMode -Version Latest
 
 # Load conda's PowerShell hook from the newly installed prefix and
 # activate the base environment at that same prefix.
-& "$Env:PREFIX\shell\condabin\conda-hook.ps1"
-conda activate "$Env:PREFIX"
+& Join-Path "$Env:CONDA_PREFIX" "\shell\condabin\conda-hook.ps1"
+conda activate "$Env:CONDA_PREFIX"
 
 # Initialize conda for all supported shells on this machine.
 conda init --all
@@ -15,7 +15,7 @@ conda init --all
 # Create PEP 668 EXTERNALLY-MANAGED marker to block pip/uv/poetry in base.
 # On Windows the base environment keeps the standard library directly in
 # <PREFIX>\Lib, so the marker is not placed in a version-specific subfolder.
-$MarkerFile = Join-Path $Env:PREFIX "Lib\EXTERNALLY-MANAGED"
+$MarkerFile = Join-Path "$Env:CONDA_PREFIX" "Lib\EXTERNALLY-MANAGED"
 
 $MarkerContent = @'
 [externally-managed]
