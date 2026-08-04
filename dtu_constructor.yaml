@@ -42,49 +42,8 @@ specs:
 # - dtu_year
 # - dtu_semester
 extra_envs:
-  01001-{{ dtu_semester }}{{ dtu_year[2:] }}:
+  DTU-test:
     channels:
       - conda-forge
     specs:
       - *dtu_python
-      - *dtu_numpy
-      - *dtu_matplotlib
-      - *dtu_spb
-      - jupyter
-      - ipykernel
-      - scikit-learn
-      - scipy
-      - pandas
-  02002-{{ dtu_semester }}{{ dtu_year[2:] }}:
-    channels:
-      - conda-forge
-    specs:
-      - *dtu_python
-      - *dtu_numpy
-      - *dtu_matplotlib
-      - jupyter
-      - ipykernel
-  02402-{{ dtu_semester }}{{ dtu_year[2:] }}:
-    channels:
-      - conda-forge
-    specs:
-      - *dtu_python
-      - *dtu_numpy
-      - *dtu_matplotlib
-      - pandas
-      - scipy
-      - statsmodels
-      - jupyter
-      - ipykernel
-  10060-{{ dtu_semester }}{{ dtu_year[2:] }}:
-    channels:
-      - conda-forge
-    specs:
-      - *dtu_python
-      - *dtu_numpy
-      - *dtu_matplotlib
-      - pandas
-      - scipy
-      - uncertainties
-      - jupyter
-      - ipykernel

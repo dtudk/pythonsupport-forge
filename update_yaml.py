@@ -173,6 +173,7 @@ safe_dump(dtu_values, yaml_stream)
 # and multi-line messages. So we instead keep them here.
 delete_key(yaml_stream, "post_install")
 yaml_stream.write("""
+post_install_desc: "Forcing externally managed Python..."
 post_install: dtu_post_install.sh  # [unix]
 post_install: dtu_post_install.ps1  # [win]
 
