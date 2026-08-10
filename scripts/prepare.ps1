@@ -37,4 +37,4 @@ if (Test-Path $TESTSH) {
 }
 
 # copy over post_install script
-Copy-Item scripts\dtu_post_install.ps1 miniforge\Miniforge3\dtu_post_install.ps1
+Copy-Item scripts\dtu_post_install.bat miniforge\Miniforge3\dtu_post_install.bat

@@ -175,7 +175,7 @@ delete_key(yaml_stream, "post_install")
 yaml_stream.write("""
 post_install_desc: "Forcing externally managed Python..."
 post_install: dtu_post_install.sh  # [unix]
-post_install: dtu_post_install.ps1  # [win]
+post_install: dtu_post_install.bat  # [win]
 
 # Freeze base environment to prevent students from modifying it (CEP-22)
 # Requires constructor>=3.13.0
