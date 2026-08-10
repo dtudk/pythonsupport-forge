@@ -13,10 +13,10 @@ if errorlevel 1 exit /b 1
 rem Create PEP 668 EXTERNALLY-MANAGED marker to block pip/uv/poetry in base
 rem See PEP 668 for details.
 set STDLIB_PATH=
-for /f "usebackq delims=" %%p in (`'%PREFIX%\python.exe' -c "import sysconfig; print(sysconfig.get_path('stdlib', sysconfig.get_default_scheme()))"`) do set "STDLIB_PATH=%%p"
+for /f "usebackq delims=" %%p in (`%PREFIX%\python.exe -c "import sysconfig; print(sysconfig.get_path('stdlib', sysconfig.get_default_scheme()))"`) do set "STDLIB_PATH=%%p"
 if not defined STDLIB_PATH exit /b 1
 
-set "MARKER_FILE=%STDLIB_PATH%\EXTERNALLY-MANAGED"
+set MARKER_FILE="%STDLIB_PATH%\EXTERNALLY-MANAGED"
 
 >  "%MARKER_FILE%" echo "[externally-managed]"
 >> "%MARKER_FILE%" echo "Error=This base environment is frozen and cannot be modified."
