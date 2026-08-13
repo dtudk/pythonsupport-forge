@@ -18,16 +18,16 @@ if not defined STDLIB_PATH exit /b 1
 
 set MARKER_FILE="%STDLIB_PATH%\EXTERNALLY-MANAGED"
 
->  "%MARKER_FILE%" echo "[externally-managed]"
->> "%MARKER_FILE%" echo "Error=This base environment is frozen and cannot be modified."
->> "%MARKER_FILE%" echo ""
->> "%MARKER_FILE%" echo "  To control packages please create a new environment:"
->> "%MARKER_FILE%" echo ""
->> "%MARKER_FILE%" echo "    conda create -n myproject python=3.14 <your-packages>"
->> "%MARKER_FILE%" echo "    conda activate myproject"
->> "%MARKER_FILE%" echo ""
->> "%MARKER_FILE%" echo "  For more information, have a look here:"
->> "%MARKER_FILE%" echo "  https://pythonsupport.dtu.dk/learn-more/packages-and-environments/environments.html"
+>  "%MARKER_FILE%" echo [externally-managed]
+>> "%MARKER_FILE%" echo Error=This base environment is frozen and cannot be modified.
+>> "%MARKER_FILE%" echo 
+>> "%MARKER_FILE%" echo   To control packages please create a new environment:
+>> "%MARKER_FILE%" echo 
+>> "%MARKER_FILE%" echo     conda create -n myproject python=3.14 <your-packages>
+>> "%MARKER_FILE%" echo     conda activate myproject
+>> "%MARKER_FILE%" echo 
+>> "%MARKER_FILE%" echo   For more information, have a look here:
+>> "%MARKER_FILE%" echo   https://pythonsupport.dtu.dk/learn-more/packages-and-environments/environments.html
 if errorlevel 1 exit /b 1
 
 exit /b 0
