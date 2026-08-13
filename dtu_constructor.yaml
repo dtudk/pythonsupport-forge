@@ -30,6 +30,7 @@ specs:
   - *dtu_python
   - *dtu_numpy
   - *dtu_matplotlib
+  - *dtu_spb
   - jupyter
   - ipykernel
   - scikit-learn
