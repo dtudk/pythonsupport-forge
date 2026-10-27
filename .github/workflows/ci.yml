@@ -42,15 +42,6 @@ jobs:
             TEST_IMAGE_NAMES: "ubuntu:24.04"
 
           - os: ubuntu-latest
-            ARCH: riscv64
-            TARGET_PLATFORM: linux-riscv64
-            DOCKER_ARCH: amd64
-            DOCKERIMAGE: condaforge/linux-anvil-x86_64:alma10
-            OS_NAME: "Linux"
-            # No testing until docker image has been created
-            TEST_IMAGE_NAMES: " "
-
-          - os: ubuntu-latest
             ARCH: x86_64
             TARGET_PLATFORM: linux-64
             DOCKER_ARCH: amd64
@@ -160,7 +151,7 @@ jobs:
               "subscriptionId": "${{ secrets.WINDOWS_SIGNING_AZURE_SUBSCRIPTION_ID }}",
               "tenantId": "${{ secrets.WINDOWS_SIGNING_AZURE_TENANT_ID }}"
             }
-      
+
       # NOTE: Azure Code Signing has a monthly quota. Every time a given file
       # is signed, it counts as a signature. These certificates are shared with
       # other NumFOCUS projects, so we only sign final releases. We don't want to
@@ -197,6 +188,7 @@ jobs:
           OS_NAME: ${{ matrix.OS_NAME }}
           EXT: ${{ matrix.OS_NAME == 'Windows' && 'exe' || 'sh' }}
         run: |
+          cd miniforge
           # Copy for latest release
           cp build/Miniforge3-*-$OS_NAME-$ARCH.$EXT build/Miniforge3-$OS_NAME-$ARCH.$EXT
           if [[ "$OS_NAME" == "MacOSX" ]]; then
