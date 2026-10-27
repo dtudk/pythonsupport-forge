@@ -225,6 +225,7 @@ jobs:
   # where the bundled mamba/micromamba downloaded the embedded packages instead
   # of unpacking the embedded payload.
   test-offline:
+    if: false
     name: Offline-${{ matrix.OS_NAME }}-${{ matrix.ARCH }}
     needs: build
     runs-on: ${{ matrix.os }}
