@@ -6,10 +6,6 @@ rem activate the base environment at that same prefix.
 call "%PREFIX%\Scripts\activate.bat" "%PREFIX%"
 if errorlevel 1 exit /b 1
 
-rem Initialize conda for all supported shells on this machine.
-call "%PREFIX%\condabin\conda.bat" init --all
-if errorlevel 1 exit /b 1
-
 rem Create PEP 668 EXTERNALLY-MANAGED marker to block pip/uv/poetry in base
 rem See PEP 668 for details.
 set STDLIB_PATH=
@@ -29,5 +25,10 @@ set MARKER_FILE="%STDLIB_PATH%\EXTERNALLY-MANAGED"
 >> "%MARKER_FILE%" echo   For more information, have a look here:
 >> "%MARKER_FILE%" echo   https://pythonsupport.dtu.dk/learn-more/packages-and-environments/environments.html
 if errorlevel 1 exit /b 1
+
+
+rem Initialize conda for all supported shells on this machine.
+rem call "%PREFIX%\condabin\conda.bat" init --all
+rem if errorlevel 1 exit /b 1
 
 exit /b 0
