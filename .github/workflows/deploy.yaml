@@ -20,7 +20,7 @@ jobs:
 
   build:
     # We need it somewhere else than workflows to disable auto-runs.
-    uses: ./.github/ci.yaml
+    uses: ./.github/ci.yml
 
   deploy:
     name: Publish on pythonsupport.dtu.dk
