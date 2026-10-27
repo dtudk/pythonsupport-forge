@@ -56,4 +56,6 @@ See `.github/workflows/deploy.yml` which uses this file:
 
      Step: Upload miniforge to Github artifact/release
 
+  #. Update path in offline tests
+
 And that should be it.

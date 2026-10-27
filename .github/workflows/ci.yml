@@ -267,7 +267,7 @@ jobs:
           docker run --rm --network none \
             -v "$PWD:/construct" -e CONSTRUCT_ROOT=/construct \
             --platform "linux/${{ matrix.DOCKER_ARCH }}" "${{ matrix.TEST_IMAGE }}" \
-            /construct/scripts/test_offline.sh
+            /construct/miniforge/scripts/test_offline.sh
 
       # macOS has no Docker on the runner, so block the package hosts at the
       # resolver instead. The runner VM is ephemeral, so there is no need to
@@ -295,4 +295,4 @@ jobs:
       - name: Run installer offline (Windows, macOS)
         if: matrix.OS_NAME == 'Windows' || matrix.OS_NAME == 'MacOSX'
         shell: bash
-        run: bash scripts/test_offline.sh
+        run: bash miniforge/scripts/test_offline.sh
